@@ -1,0 +1,11 @@
+FROM python
+
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /code/
+COPY Pipfile Pipfile.lock manage.py ./
+
+COPY ./CloudReaderApi ./CloudReaderApi
+
+RUN pip install pipenv
+RUN pipenv install --system --deploy
